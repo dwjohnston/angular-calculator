@@ -1,0 +1,19 @@
+.display {
+  display: flex;
+  flex-flow: row wrap; 
+  border: solid 1px black;
+  padding: 1em;
+  justify-content: flex-end;
+
+  width: 20em;
+  margin: 1em auto;
+
+}
+
+
+.display span {
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center; 
+  width: 1.2em;
+}

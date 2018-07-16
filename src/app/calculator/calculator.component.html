@@ -1,0 +1,11 @@
+<div>
+
+  <app-calculator-display [opString] = "currentString">
+
+  </app-calculator-display>
+
+  <div class="buttons">
+    <app-calculator-button *ngFor="let sym of symbols" [value]="sym" (output)="onOutput($event)"></app-calculator-button>
+    <app-calculator-button [value] = "{label: '=', isOperation: true}" (output) = "onCalculate($event)"></app-calculator-button>
+  </div>
+</div>
