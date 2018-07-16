@@ -28,9 +28,10 @@ export class CalculatorEngine {
         }
 
         if (!this.operationsList.some(v => v.isOperation)){
-            console.log("aa");
             return; 
         }
+
+
 
         let result = eval(this.getOperationsAsString());
         this.operationsList = [];
@@ -42,12 +43,14 @@ export class CalculatorEngine {
 
         if (sym.isOperation) {
             if (this.operationsList.length === 0 || this.operationsList[this.operationsList.length - 1].isOperation) {
-                return; // Do nothing
+
+                if (sym === CalcSymbol.DOT) {
+                    this.operationsList.push(CalcSymbol.ZERO); 
+                }
+                else return; // Do nothing
              }
         }
 
-
         this.operationsList.push(sym);
-        console.log(this.operationsList);
     }
 }

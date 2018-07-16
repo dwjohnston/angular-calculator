@@ -145,6 +145,19 @@ describe('CalculatorEngine', () => {
         engine.addSymbol(CalcSymbol.TWO); 
         expect(engine.calculate()).toBe(4.5);
     });
+
+
+    it("4.5 + 4.5 ~= 9.0", () => {
+        engine.addSymbol(CalcSymbol.FOUR); 
+        engine.addSymbol(CalcSymbol.DOT); 
+        engine.addSymbol(CalcSymbol.FIVE);
+        engine.addSymbol(CalcSymbol.PLUS); 
+        engine.addSymbol(CalcSymbol.FOUR); 
+        engine.addSymbol(CalcSymbol.DOT); 
+        engine.addSymbol(CalcSymbol.FIVE); 
+
+        expect(engine.calculate()).toBeCloseTo(9);
+    });
     
   });
 

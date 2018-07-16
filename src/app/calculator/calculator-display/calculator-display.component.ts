@@ -13,18 +13,10 @@ export class CalculatorDisplayComponent implements OnInit {
   constructor() { }
 
   @Input() opString: string; 
-  //@Input() focusEmmiter: EventEmitter<boolean>;
   @Input() focusEmitter: any;
 
   ngOnInit() {
-
-    console.log(this.opString);
-
-    console.log(this.focusEmitter, "aa"); 
     this.focusEmitter.subscribe((e : boolean) =>  {
-
-      console.log(e);
-      console.log(this.me);
       setTimeout(() => this.me.nativeElement.focus(), 50);
     });
   }

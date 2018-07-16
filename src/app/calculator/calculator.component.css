@@ -1,7 +1,7 @@
 .buttons {
     display: grid; 
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 3em);
+    grid-template-rows: repeat(6, 3em) ;
     grid-row-gap: 0.5em;
     grid-column-gap: 0.5em;
 
