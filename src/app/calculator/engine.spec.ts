@@ -48,13 +48,28 @@ describe('CalculatorEngine', () => {
   });
 
   describe('calculate()', () => {
-    it ('returns nothing, if last symbol is an operation', () => {
-        expect(engine.getOperations().length).toBe(0);
+    it (' if last symbol is an operation, returns nothing', () => {
         engine.addSymbol(CalcSymbol.ONE);
-        expect(engine.getOperations().length).toBe(1);
         engine.addSymbol(CalcSymbol.PLUS);
         expect(engine.calculate()).not.toBeDefined();
     });
+
+
+    it ("if no operations present, return nothing", () => {
+        engine.addSymbol(CalcSymbol.ONE); 
+        engine.addSymbol(CalcSymbol.ONE); 
+        expect(engine.calculate()).not.toBeDefined();
+    });
+
+    it ("after successful calculation, operation list is cleared", () =>{
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.PLUS);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.calculate(); 
+
+        expect(engine.getOperations.length).toBe(0);
+    });
+
     it ("1 +1 = 2", () => {
         engine.addSymbol(CalcSymbol.ONE);
         engine.addSymbol(CalcSymbol.PLUS);
@@ -82,12 +97,12 @@ describe('CalculatorEngine', () => {
 
     })
 
-    it ("1 / 0 throws error", () => {
+    it ("1 / 0 = Infinity", () => {
         engine.addSymbol(CalcSymbol.ONE);
         engine.addSymbol(CalcSymbol.DIVIDE);
         engine.addSymbol(CalcSymbol.ZERO);
 
-        expect(engine.calculate()).toThrowError();
+        expect(engine.calculate()).toBe(Number.POSITIVE_INFINITY)
     })
 
 

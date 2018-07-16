@@ -27,7 +27,14 @@ export class CalculatorEngine {
             return;
         }
 
-        return eval(this.getOperationsAsString());
+        if (!this.operationsList.some(v => v.isOperation)){
+            console.log("aa");
+            return; 
+        }
+
+        let result = eval(this.getOperationsAsString());
+        this.operationsList = [];
+        return result; 
     }
 
     addSymbol(sym: ISymbol) {

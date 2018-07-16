@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit, EventEmitter
+
 } from '@angular/core';
 
 import { ISymbol, CalcSymbol } from './symbol';
@@ -20,25 +21,35 @@ export class CalculatorComponent implements OnInit {
   symbols: ISymbol[];
   currentString: string;
 
+  focusEmitter: EventEmitter<boolean>;
+
+  
   public onOutput(value) { 
     this.engine.addSymbol(value);
-    this.currentString = this.engine.getOperationsAsString(); 
+    this.currentString = this.engine.getOperationsAsString() || this.currentString; 
+  
   }
 
   public onCalculate(value) {
 
-    try {
-      this.currentString = this.engine.calculate().toString(); 
+
+    let result = this.engine.calculate(); 
+
+    if (result !== undefined) {
+      this.currentString = result.toString();
+      this.focusEmitter.emit(true);
     }
-    catch (err) {
-      this.currentString = "err";
-    }
+
   }
 
   ngOnInit() {
     this.engine = new CalculatorEngine();
     this.symbols = Object.values(CalcSymbol);
     this.currentString = "0";
+    this.focusEmitter = new EventEmitter<boolean>(); 
+
+
+    console.log(this.focusEmitter);
   }
 
 }

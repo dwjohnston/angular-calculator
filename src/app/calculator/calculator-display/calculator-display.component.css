@@ -10,10 +10,14 @@
 
 }
 
-
 .display span {
   font-family: monospace;
   font-size: 2em;
   text-align: center; 
   width: 1.2em;
+}
+
+
+display span.invisible {
+    width: auto;
 }
