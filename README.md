@@ -2,26 +2,64 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Run
 
-## Code scaffolding
+```
+npm start
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+or 
 
-## Build
+```
+ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Tests
 
-## Running unit tests
+```
+npm test
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+or 
 
-## Running end-to-end tests
+```
+ng test
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Unit tests on the `CalculatorEngine` only. 
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Model / Core implementation
+
+The core of the implementation is framework agnostic. 
+
+The calculation is done essentially by calling `eval()` on a valid math string. 
+
+### ISymbol 
+
+Represents either a single digit, or an operation (+,-, *, /). 
+
+
+### CalcSymbol 
+
+An enum like constant listing all of the symbols in our calculator, except `=`. 
+
+### CalculatorEngine
+
+A plain javascript class. 
+
+- addSymbol(sym: ISymbol) - Attempt to add a symbol. If it is an operation and there are no preceeding numbers or it follows an existing operation, nothing will happen. 
+
+- calculate() - Attempt to calculate the current list of operations. If the operation is invalid (ie. ends with an operation, or has no operations), it will return `undefined`. 
+
+- getOperationList() - Return an array of ISymbol. 
+
+- getOperationListAsString() - Return the operation list as a string. 
+
+
+## Accessibility
+
+Focus shifts to display on calculation, so screen readers can read it. 
+
+
