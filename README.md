@@ -44,7 +44,7 @@ The calculation is done essentially by calling `eval()` on a valid math string.
 Represents either a single digit, a .,  or an operation (+,-, *, /). 
 
 #### Fields
-- `isOperation` boolean value to denote an operation. This should be replaced with an enum type value as the calculator vocabulary expans. 
+- `isOperation` boolean value to denote an operation. This should be replaced with an enum type value as the calculator vocabulary expands. 
 - `label` - The label of the symbol - also it's literal value when being evalutated. 
 
 
