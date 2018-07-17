@@ -31,13 +31,17 @@ export class CalculatorEngine {
             return; 
         }
 
-
-        let result= eval(this.getOperationsAsString());
-  
-
-
-        this.operationsList = [];
-        return result; 
+        let result; 
+        try {
+            result= eval(this.getOperationsAsString());
+         }
+        catch (e) {
+            throw(e);
+        }
+        finally {
+            this.operationsList = [];
+        }
+        return result;       
     }
 
     addSymbol(sym: ISymbol) {

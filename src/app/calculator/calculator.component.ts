@@ -32,8 +32,12 @@ export class CalculatorComponent implements OnInit {
 
   public onCalculate(value) {
 
-
-    let result = this.engine.calculate(); 
+    let result; 
+    try {
+       result = this.engine.calculate(); 
+    } catch (e) {
+       result = "err"; 
+    }
 
     if (result !== undefined) {
       this.currentString = result.toString();
