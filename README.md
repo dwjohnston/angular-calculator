@@ -43,6 +43,10 @@ The calculation is done essentially by calling `eval()` on a valid math string.
 
 Represents either a single digit, a .,  or an operation (+,-, *, /). 
 
+#### Fields
+- `isOperation` boolean value to denote an operation. This should be replaced with an enum type value as the calculator vocabulary expans. 
+- `label` - The label of the symbol - also it's literal value when being evalutated. 
+
 
 ### CalcSymbol 
 
@@ -52,13 +56,15 @@ An enum like constant listing all of the symbols in our calculator, except `=`.
 
 A plain javascript class. 
 
-- addSymbol(sym: ISymbol) - Attempt to add a symbol. If it is an operation and there are no preceeding numbers or it follows an existing operation, nothing will happen. 
+#### Methods
 
-- calculate() - Attempt to calculate the current list of operations. If the operation is invalid (ie. ends with an operation, or has no operations), it will return `undefined`. It will throw an error if encountering any syntax errors (eg `001+1` or `0..1 + 1`). 
+- `addSymbol(sym: ISymbol)` - Attempt to add a symbol. If it is an operation and there are no preceeding numbers or it follows an existing operation, nothing will happen. 
 
-- getOperationList() - Return an array of ISymbol. 
+- `calculate()` - Attempt to calculate the current list of operations. If the operation is invalid (ie. ends with an operation, or has no operations), it will return `undefined`. It will throw an error if encountering any syntax errors (eg `001+1` or `0..1 + 1`). 
 
-- getOperationListAsString() - Return the operation list as a string. 
+- `getOperationList()` - Return an array of ISymbol. 
+
+- `getOperationListAsString()`- Return the operation list as a string. 
 
 ## What's a valid number? 
 
