@@ -54,7 +54,7 @@ An enum like constant listing all of the symbols in our calculator, except `=`.
 
 ### CalculatorEngine
 
-A plain javascript class. 
+A plain javascript class, the does the calculation. 
 
 #### Methods
 
@@ -70,7 +70,7 @@ A plain javascript class.
 
 The implementation of what is a syntatically correct string of symbols is not trivial - when you throw the `.` symbol in the mix. Should `.` be considered a number or an operator? Should `1+.1` be valid? 
 
-In this implementation, leading zeros (eg. `001`) and multiple periods will throw an error. 
+In this implementation, leading zeros (eg. `001`) and multiple periods will throw an error. There are tests convering these scenarios. 
 
 ## Accessibility
 
