@@ -58,7 +58,7 @@ export const CalcSymbol: ISymbolsSet = {
 
     DOT  :  {
       label: '.',
-      isOperation: true
+      isOperation: false
     },
 
     PLUS  :  {

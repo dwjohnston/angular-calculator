@@ -32,8 +32,10 @@ export class CalculatorEngine {
         }
 
 
+        let result= eval(this.getOperationsAsString());
+  
 
-        let result = eval(this.getOperationsAsString());
+
         this.operationsList = [];
         return result; 
     }

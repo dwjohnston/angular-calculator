@@ -70,6 +70,47 @@ describe('CalculatorEngine', () => {
         expect(engine.getOperations.length).toBe(0);
     });
 
+    it("0.1+1 ~= 1.1", () => {
+        engine.addSymbol(CalcSymbol.ZERO);
+        engine.addSymbol(CalcSymbol.DOT);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.PLUS);
+        engine.addSymbol(CalcSymbol.ONE);
+        
+        expect(engine.calculate()).toBeCloseTo(1.1);
+
+    });
+
+    it(".1+1 ~= 1.1", () => {
+        engine.addSymbol(CalcSymbol.DOT);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.PLUS);
+        engine.addSymbol(CalcSymbol.ONE);
+        
+        expect(engine.calculate()).toBeCloseTo(1.1);
+
+    });
+
+    it(".1.1+1 throws Error", () => {
+        engine.addSymbol(CalcSymbol.DOT);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.DOT);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.PLUS);
+        engine.addSymbol(CalcSymbol.ONE);
+        
+        expect(engine.calculate).toThrowError();
+    });
+
+    it("001+1 throws Error", () => {
+        engine.addSymbol(CalcSymbol.ZERO);
+        engine.addSymbol(CalcSymbol.ZERO);
+        engine.addSymbol(CalcSymbol.ONE);
+        engine.addSymbol(CalcSymbol.PLUS);
+        engine.addSymbol(CalcSymbol.ONE);
+        expect(engine.calculate).toThrowError();
+    });
+
     it ("1 +1 = 2", () => {
         engine.addSymbol(CalcSymbol.ONE);
         engine.addSymbol(CalcSymbol.PLUS);
